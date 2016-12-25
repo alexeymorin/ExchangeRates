@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Exchange Rates</string>
+    <string name="action_settings">Settings</string>
+    <string name="web_service_url">http://www.cbr.ru/scripts/XML_daily_eng.asp</string>
+    <string name="invalid_url">Invalide URL</string>
+    <string name="connection_error">Connection error</string>
+    <string name="rub">RUB</string>
+</resources>

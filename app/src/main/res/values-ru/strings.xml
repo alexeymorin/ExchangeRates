@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Официальные курсы</string>
+    <string name="web_service_url">http://www.cbr.ru/scripts/XML_daily.asp</string>
+    <string name="invalid_url">Некорректный URL</string>
+    <string name="connection_error">Ошибка подкючения</string>
+    <string name="rub">руб.</string>
+</resources>
