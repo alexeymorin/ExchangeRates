@@ -1,7 +1,9 @@
 package com.github.alexeymorin.exchangerates;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,8 +14,11 @@ import java.util.List;
 
 class ValuteArrayAdapter extends ArrayAdapter<Valute> {
 
+    private Context context;
+
     public ValuteArrayAdapter(Context context, List<Valute> valuteList) {
         super(context, -1, valuteList);
+        this.context = context;
     }
 
     private static class ViewHolder {
@@ -22,7 +27,7 @@ class ValuteArrayAdapter extends ArrayAdapter<Valute> {
 
     @NonNull
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, final ViewGroup parent) {
         Valute valute = getItem(position);
         ViewHolder viewHolder;
         if (convertView == null) {
@@ -36,6 +41,13 @@ class ValuteArrayAdapter extends ArrayAdapter<Valute> {
         };
 
         viewHolder.currencyTextView.setText(valute.nominal + " " + valute.name + " = " + valute.value + " " + getContext().getString(R.string.rub));
+        viewHolder.currencyTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent grafIntent = new Intent(context, GraphActivity.class);
+                context.startActivity(grafIntent);
+            }
+        });
         return convertView;
     }
 }
