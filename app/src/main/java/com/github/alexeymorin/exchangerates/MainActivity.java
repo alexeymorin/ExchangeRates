@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
     private URL createURL() {
         try {
-            URL url = new URL(getString(R.string.web_service_url));
+            URL url = new URL(getString(R.string.web_service_daily_url));
             return url;
         } catch (Exception e) {
             e.printStackTrace();
@@ -68,6 +68,8 @@ public class MainActivity extends AppCompatActivity {
         for(int i = 0; i < valutesNodeList.getLength(); i++) {
             Node valuteNode = valutesNodeList.item(i);
             if (valuteNode.getNodeName().equals("Valute")) {
+                String id = valuteNode.getAttributes().getNamedItem("ID").getTextContent();
+                Log.i(TAG, "id="+id);
                 NodeList valuteProperties = valuteNode.getChildNodes();
                 String numCode = "";
                 String charCode = "";
@@ -102,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
                         continue;
                     }
                 }
-                valuteList.add(new Valute(numCode, charCode, nominal, name, value));
+                valuteList.add(new Valute(id, numCode, charCode, nominal, name, value));
             }
         }
     }
@@ -125,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
                 e.printStackTrace();
                 Snackbar.make(findViewById(R.id.coordinatorLayout), R.string.connection_error, Snackbar.LENGTH_LONG).show();
             } finally {
-               connection.disconnect();
+                connection.disconnect();
             }
             return null;
         }

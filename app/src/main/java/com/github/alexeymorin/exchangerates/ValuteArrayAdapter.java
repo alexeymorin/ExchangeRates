@@ -28,7 +28,7 @@ class ValuteArrayAdapter extends ArrayAdapter<Valute> {
     @NonNull
     @Override
     public View getView(int position, View convertView, final ViewGroup parent) {
-        Valute valute = getItem(position);
+        final Valute valute = getItem(position);
         ViewHolder viewHolder;
         if (convertView == null) {
             viewHolder = new ViewHolder();
@@ -45,6 +45,8 @@ class ValuteArrayAdapter extends ArrayAdapter<Valute> {
             @Override
             public void onClick(View v) {
                 Intent grafIntent = new Intent(context, GraphActivity.class);
+                grafIntent.putExtra("ID", valute.id);
+                grafIntent.putExtra("CharCode", valute.charCode);
                 context.startActivity(grafIntent);
             }
         });
