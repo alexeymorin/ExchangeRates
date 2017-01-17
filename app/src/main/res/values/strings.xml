@@ -6,4 +6,5 @@
     <string name="invalid_url">Invalide URL</string>
     <string name="connection_error">Connection error</string>
     <string name="rub">RUB</string>
+    <string name="graph_activity_label">The rate for 30 days</string>
 </resources>

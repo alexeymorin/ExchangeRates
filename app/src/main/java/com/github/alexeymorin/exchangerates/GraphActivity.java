@@ -34,8 +34,11 @@ public class GraphActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_graph);
 
-        // данный url для только отладки
-        URL url = createURL(getIntent().getExtras().getString("ID",""), "01/11/2016", "31/12/2016");
+        long curTime = System.currentTimeMillis();
+        String date1 = new SimpleDateFormat("dd/MM/yyyy").format(curTime-30*24*60*60*1000L);
+        String date2 = new SimpleDateFormat("dd/MM/yyyy").format(curTime);
+
+        URL url = createURL(getIntent().getExtras().getString("ID",""), date1, date2);
 
         GetValCursSeriesTask getValCursSeriesTask = new GetValCursSeriesTask();
         getValCursSeriesTask.execute(url);
